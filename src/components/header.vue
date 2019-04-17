@@ -100,6 +100,7 @@ export default {
         }
         .header-bottom{
             overflow: hidden;
+            height:80px;
             .logo{
                 float: left;
                 width: 246px;
