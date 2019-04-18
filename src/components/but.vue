@@ -1,6 +1,12 @@
 <template>
     <div class="btn">
-        <el-button type="primary" @click="countDown">{{content}}</el-button>
+        <el-carousel :interval="4000" type="card" height="300px" :autoplay="false" arrow="never" indicator-position="none">
+            <el-carousel-item v-for="item in 6" :key="item">
+                <div class="item-content">
+                    <h3>{{item}}</h3>
+                </div>
+            </el-carousel-item>
+        </el-carousel>
     </div>
 </template>
 
@@ -15,34 +21,35 @@ export default {
     }
   },
   methods: {
-    countDown () {
-    //     if (!this.canClick) return  // 防止重复点击倒计时时间问题
-    //     this.canClick = false
-    //     this.content = this.totalTime + 's后重新发送'
-    //     let clock = window.setInterval(() => {
-    //     this.totalTime--
-    //     this.content = this.totalTime + 's后重新发送'
-    //     if (this.totalTime < 0) {
-    //       window.clearInterval(clock)
-    //       this.content = '重新发送验证码'
-    //       this.totalTime = 10
-    //       this.canClick = true  // 这里重新开启
-    //     }
-    //   },1000)
-      this.startMove()
-    },
-    startMove () {
-        window.clearInterval(timer);
-        let timer = window.setInterval(() => {
-            this.totalTime --
-            console.log(this.totalTime)
-            if(this.totalTime < 0){
-                this.totalTime = 10
-                window.clearInterval(timer)
-            }
-        }, 1000);
-    }
+
   }
 }
 </script>
 
+<style lang="less">
+  .el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 300px;
+    margin: 0;
+    text-align: center;
+  }
+  .item-content{
+        width: 300px;
+        height:300px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-color: #d3dce6;
+    }
+  .el-carousel__item.is-active {
+    .item-content{
+        width: 300px;
+        height:300px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-color: #99a9bf;
+    }
+  }
+  
+</style>
