@@ -16,7 +16,15 @@ export default {
         html.style.fontSize = fontSize + 'px' 
       })
     }
-  }
+    // alert(navigator.userAgent)
+    // const targetProtocol = "https:";
+    // if(process.env.NODE_ENV === 'production'){
+    //   if (window.location.protocol != targetProtocol)
+    //     window.location.href = targetProtocol +
+    //     window.location.href.substring(window.location.protocol.length);
+    //   }
+    }
+    
 }
 
 </script>

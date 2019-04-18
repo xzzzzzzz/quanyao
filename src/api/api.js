@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 //let baseUrl = '/api'
-const baseUrl = process.env.NODE_ENV === 'production' ? 'http://qyaoq.com' : '/api'
+const baseUrl = process.env.NODE_ENV === 'production' ? 'http://www.qyaoq.com' : '/api'
 // 启动页
 export const startup = {
   // 签到
@@ -12,6 +12,9 @@ export default {
   },
   home2 () { // 首页品牌施工、优质建材
     return baseUrl + '/index/index/hotImage'
+  },
+  city () { // 城市接口
+    return baseUrl + '/index/index/city'
   },
   news () { // 说说和公告详情
     return baseUrl + '/index/index/detail'

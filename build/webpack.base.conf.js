@@ -3,7 +3,7 @@ const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-const webpack = require('webpack')
+
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -14,7 +14,8 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    // app: './src/main.js'
+    app: ['babel-polyfill', './src/main.js']//最新的入口 
   },
   output: {
     path: config.build.assetsRoot,
@@ -30,15 +31,6 @@ module.exports = {
       '@': resolve('src'),
     }
   },
-
-  plugins: [
-    new webpack.ProvidePlugin({
-   $: "jquery",
-   jQuery: "jquery",
-   jquery: "jquery",
-   "window.jQuery": "jquery"
-    })
-   ],
   module: {
     rules: [
       {
@@ -49,7 +41,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'),resolve('')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

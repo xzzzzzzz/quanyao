@@ -25,9 +25,15 @@
                             <p>
                                 上海
                             </p>
-                            <p>
-                                <a href="#">[切换]</a>
+                            <p @click="showCity=!showCity" style="cursor:pointer">
+                                [切换]
                             </p>
+                            <div class="city-list" v-if="showCity">
+                                <dl class="city-item" v-for='(item,index) in cityList' :key="index">
+                                    <dt :class="{'active': cityActive == index}" @click="cityActive(index)">上海</dt>
+                                    <dd :class="{'active': regionActive == index}">嘉定</dd>
+                                </dl>
+                            </div>
                         </div>
                 </div>
                 <div class="minbanner">
@@ -59,17 +65,37 @@ export default {
         return {
             baseUrl: 'http://www.qyaoq.com',
             topBanner: [],
-            logo: '/static/img/logo.png'
+            logo: '/static/img/logo.png',
+            showCity: false,
+            cityActive: -1,
+            regionActive: -1,
+            cityList: []
         }
     },
     created () {
         this.get()
+       // this.cityGet()
     },
     methods: {
-        async get() {
+      async get() {
         const params = {}
         const data = await this.https(api.home(),params);
         this.topBanner = data.data.top 
+      },
+      async cityGet() {
+          const params = {}
+          const data = await this.https(api.city(), params);
+          if(data.code == '2000'){
+              this.cityList = data.data
+          }else{
+              this.$message.error('城市列表获取失败，请稍后再试！！')
+          }
+      },
+      cityActive (index) {
+          this.cityActive = index
+      },
+      regionActive (index) {
+          this.regionActive = index
       }
     }
 }
@@ -99,12 +125,11 @@ export default {
             }       
         }
         .header-bottom{
-            overflow: hidden;
             height:80px;
             .logo{
                 float: left;
+                height:100%;
                 width: 246px;
-                overflow: hidden;
                 .logo-left{
                     a{
                         float: left;
@@ -123,6 +148,39 @@ export default {
                     line-height: 25px;
                     box-sizing: border-box;
                     padding-left:5px;
+                    position:relative;
+                    .city-list{
+                        position: absolute;
+                        width:300px;
+                        min-height: 200px;
+                        background:#fff;
+                        border:1px solid #333333;
+                        z-index: 3333;
+                        top: 50px;
+                        left:0;
+                        .city-item{
+                            padding:10px;
+                            overflow: hidden;
+                            dt{
+                                cursor: pointer;
+                                &.active{
+                                    background:#ff6d02;
+                                    color:#fff;
+                                }
+                            }
+                            dd{
+                                float: left;
+                                padding: 10px;
+                                margin: 2px;
+                                cursor: pointer;
+                                &.active{
+                                    background:#ff6d02;
+                                    color:#fff;
+                                }
+                            }
+                            
+                        }
+                    }
                 }
             }
             .minbanner{

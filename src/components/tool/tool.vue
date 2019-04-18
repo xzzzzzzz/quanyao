@@ -6,6 +6,16 @@
                 <div class="item-child" v-html="item.childrenText">
                 </div>
             </div>
+            <div class="tool-item gong" @click="showGong">
+                <span class="el-icon-document"></span>
+                <div class="item-child" v-if="isshowGong" @click.stop>
+                    <div class="gong-content">
+                        <p v-for="(item,index) in gongList" :key="index" @click="jump({path:'news',query:{ID: item.id,title: encodeURI(item.title)}}),isshowGong=false">
+                            {{item.title}}
+                        </p>
+                    </div>
+                </div>
+            </div>
             <div class="tool-item up" v-if="showUp" @click="scrollToTop">
                 <span class="el-icon-arrow-up"></span>
             </div>
@@ -14,6 +24,7 @@
 </template>
 
 <script>
+import api from '@/api/api.js'
 export default {
     data () {
         return {
@@ -23,7 +34,9 @@ export default {
                 {className: 'phone',icon: 'el-icon-phone',childrenText:'<p>联系电话</p><p>021-52271027</p>'},
                 {className: 'code',icon: 'el-icon-code',childrenText:'<img :src="/static/img/code.png" alt=""/>'},
                 {className: 'program',icon: 'el-icon-program',childrenText:'<img :src="/static/img/p.png" alt=""/>'},
-            ]
+            ],
+            gongList: [],
+            isshowGong: false
         }
     },
     mounted() {
@@ -32,6 +45,7 @@ export default {
             targetScroll.addEventListener('scroll', this.handleScroll)
             targetScroll.addEventListener('click', this.showChild)
         });
+        this.get()
     },
     methods: {
         handleScroll() {
@@ -60,7 +74,22 @@ export default {
       },
       showChild(index) {
           this.active = index
-      }
+          if(this.isshowGong){
+              this.isshowGong = false
+          }
+      },
+      showGong() {
+          this.isshowGong = !this.isshowGong
+      },
+      async get() {
+        const params = {}
+        const data = await this.https(api.home(),params);
+        if(data.code == '2000'){
+            this.gongList = data.data.gong
+        }else{
+            this.$message.error(data.msg)
+        }
+      },
     },
     destroyed() {
       let targetScroll = document.getElementById("scroller-box")
@@ -87,6 +116,7 @@ export default {
             font-size: px2rem(18);
             text-align: center;
             color:#fff;
+            position: relative;
             &.phone{
                 background:#2599e6;
                 border-radius: px2rem(5) 0 0 0;
@@ -100,6 +130,17 @@ export default {
             }
             &.program{
                 background:#23b727 url(/static/img/p.png) no-repeat center;
+            }
+            &.gong{
+                background:#fe2500 ;
+                .item-child{
+                    width:px2rem(300);
+                    line-height: px2rem(20);
+                    opacity: 1;
+                    filter: alpha(opacity=1);
+                    transform: scale(1);
+                    padding: px2rem(10)
+                }
             }
             &.up{
                 border-radius:0 0 0 px2rem(5);

@@ -9,7 +9,7 @@
       <router-view></router-view>
     </div>
     <!-- 底部 -->
-    <div class="buttombox">quanyao &copy; 2009-2019 quanyao.com All Rights Reserved</div>
+    <div class="buttombox">quanyao &copy; 2009-2019 沪ICP备19009071号-1</div>
   </div>
 </template>
 
