@@ -91,7 +91,7 @@ export default {
     height: px2rem(30);
     margin-bottom: px2rem(10);
     color: #ff2400;
-    font-size: px2rem(13);
+    font-size: px2rem(10);
     span{
       float: left;
       line-height: px2rem(32);
@@ -104,12 +104,12 @@ export default {
     }
   }
   .service_box{
-    height: px2rem(110);
+    min-height: px2rem(100);
     text-align: left;
     overflow: hidden;
-    font-size: px2rem(14);
+    font-size: px2rem(10);
     .region{
-      font-size: px2rem(12);
+      font-size: px2rem(14);
       color:#716d6d ;
       line-height: px2rem(20)
     }

@@ -39,9 +39,22 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
+        test: /vux.src.*?js$/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        },
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client'),resolve('')]
+        query:{presets:['es2015']},
+        include: [
+          resolve('src'), 
+          resolve('test'), 
+          resolve('node_modules/webpack-dev-server/client'),
+          resolve('node_modules/vue-baidu-map')
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

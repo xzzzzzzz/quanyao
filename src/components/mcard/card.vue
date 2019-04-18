@@ -81,7 +81,7 @@ export default {
     height: px2rem(30);
     margin-bottom: px2rem(10);
     color: #ff2400;
-    font-size: px2rem(13);
+    font-size: px2rem(10);
     span{
       float: left;
       line-height: px2rem(32);

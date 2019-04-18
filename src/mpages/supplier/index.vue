@@ -69,13 +69,15 @@ export default {
     padding:px2rem(20);
     .type{
       border:1px solid #f7f7f7;
-      padding:px2rem(20);
+      // padding:px2rem(10);
+      overflow: hidden;
       box-sizing: border-box;
       span{
         padding:px2rem(5) px2rem(10);
         color:#686868;
         font-size: px2rem(14);
-        margin:px2rem(10);
+        margin:px2rem(5);
+        display: inline-block;
         cursor: pointer;
       }
       span.active{
@@ -93,6 +95,7 @@ export default {
       box-sizing:border-box;
       float: left;
       border: 1px solid #fdd0cd;
+      margin-bottom:px2rem(10);
       font-size: px2rem(14);
       .img_box{
         height:px2rem(80);
