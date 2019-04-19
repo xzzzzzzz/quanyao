@@ -1,6 +1,6 @@
 /* jshint esversion: 6 */
 //let baseUrl = '/api'
-const baseUrl = process.env.NODE_ENV === 'production' ? 'http://www.qyaoq.com' : '/api'
+const baseUrl = process.env.NODE_ENV === 'production' ? 'https://'+ window.location.host + '' : '/api'
 // 启动页
 export const startup = {
   // 签到

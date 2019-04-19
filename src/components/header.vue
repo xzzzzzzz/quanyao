@@ -28,12 +28,12 @@
                             <p @click="showCity=!showCity" style="cursor:pointer">
                                 [切换]
                             </p>
-                            <div class="city-list" v-if="showCity">
+                            <!-- <div class="city-list" v-if="showCity">
                                 <dl class="city-item" v-for='(item,index) in cityList' :key="index">
                                     <dt :class="{'active': cityActive == index}" @click="cityActive(index)">上海</dt>
                                     <dd :class="{'active': regionActive == index}">嘉定</dd>
                                 </dl>
-                            </div>
+                            </div> -->
                         </div>
                 </div>
                 <div class="minbanner">
@@ -67,8 +67,8 @@ export default {
             topBanner: [],
             logo: '/static/img/logo.png',
             showCity: false,
-            cityActive: -1,
-            regionActive: -1,
+            cityActives: -1,
+            regionActives: -1,
             cityList: []
         }
     },

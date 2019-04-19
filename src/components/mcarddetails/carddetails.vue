@@ -6,6 +6,11 @@
         <div class="imgs_bos"><img class="imgs" width= '100%' :src=baseUrl+carddata.logo alt=""></div>
         <p>{{carddata.seller_name}}</p>
         <div class="dhbox"><img :src=icon alt="" ><span>{{carddata.phone}}</span></div>
+        <!-- <div class="service_box">
+          <span v-if="page === '2'">擅长风格：</span>
+          <span v-else style="font-weight: bold;">服务区域：</span>
+          <span class="region">{{carddata.region}}</span>
+        </div> -->
       </div>
       <div class="qrcode_box">
         <div><img :src=baseUrl+carddata.program alt="" width="100%" height="100%"><p>小程序</p></div>
@@ -230,7 +235,7 @@ export default {
       height: px2rem(32);
       margin-bottom: px2rem(10);
       color: #ff2400;
-      font-size: px2rem(16);
+      font-size: px2rem(13);
       span{
         float: left;
         line-height: px2rem(32);
@@ -240,6 +245,17 @@ export default {
         float: left;
         margin: px2rem(8) px2rem(10);
         height:auto;
+      }
+    }
+    .service_box{
+      height: px2rem(60);
+      text-align: left;
+      overflow: hidden;
+      font-size: px2rem(14);
+      .region{
+        font-size: px2rem(12);
+        color:#716d6d ;
+        line-height: px2rem(20)
       }
     }
   }
