@@ -53,7 +53,7 @@ export default {
     return baseUrl + '/index/school/index'
   },
   universitydetails () { // 装修大学堂详情
-    return baseUrl + 'index/school/detail'
+    return baseUrl + '/index/school/detail'
   }
 
 
