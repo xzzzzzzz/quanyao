@@ -55,7 +55,7 @@
                     创意设计
                 </h3>
                 <div class="business-list fix">
-                    <div class="list-item" v-for="(item,index) in originalList" :key="index" @click="jump({path:'supplierdetails',query:{ID: item.id}})">
+                    <div class="list-item" v-for="(item,index) in originalList" :key="index" @click="jump({path:'designerdetails',query:{ID: item.id}})">
                         <div class="item-logo">
                             <img :src="basrUrl+item.logo" alt="">
                         </div>
@@ -80,7 +80,7 @@
                     第三方监管
                 </h3>
                 <div class="business-list fix">
-                    <div class="list-item" v-for="(item,index) in supervise" :key="index" @click="jump({path:'supplierdetails',query:{ID: item.id}})">
+                    <div class="list-item" v-for="(item,index) in supervise" :key="index" @click="jump({path:'supervisedetails',query:{ID: item.id}})">
                         <div class="item-logo">
                             <img :src="basrUrl+item.logo" alt="">
                         </div>
