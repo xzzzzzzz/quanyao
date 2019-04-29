@@ -16,16 +16,27 @@ export default {
     data () {
         return {
             newtext: '',
-            title: ''
+            title: '',
+            id: ''
         }
     },
     mounted () {
+        this.id = this.$route.query.ID
         this.title = decodeURI(this.$route.query.title)
         this.getDate()
     },
-     methods : {
+    watch: {
+        $route(){
+            this.id = this.$route.query.ID
+            this.title = decodeURI(this.$route.query.title)
+        },
+        id(){
+          this.getDate()  
+        }
+    },
+    methods : {
         async getDate() {
-            const params= {id:this.$route.query.ID}
+            const params= {id:this.id}
             const data = await this.https(api.news(),params)
             if(data.code == '2000'){
                 let text = data.data[0].text

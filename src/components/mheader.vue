@@ -2,7 +2,7 @@
     <div class="mHeader">
         <div class="header-lfet fl">
             <span>上海</span>
-            <span>[切换]</span>
+            <span @click="address">[切换]</span>
         </div>
         <div class="header-right fr">
             <span class="el-icon-search"></span>
@@ -10,6 +10,23 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data () {
+        return {
+            nowCity: '上海',
+
+        }
+    },
+    methods: {
+        address() {
+            this.jump({path:'positionpage'})
+        }
+    }
+}
+</script>
+
 
 <style lang="scss" scoped>
 @import '../assets/styles/global.scss';

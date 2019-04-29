@@ -57,6 +57,9 @@ const msupplierdetails = resolve => require(['@/mpages/supplier/supplierdetails'
 //商家入驻
 const mcooperation = resolve => require(['@/mpages/cooperation'], resolve)
 
+// 手机定位页面
+const positionpage = resolve => require(['@/mpages/position'], resolve)
+
 Vue.use(Router)
 const isMoblie = (navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
 let router = null;
@@ -143,6 +146,11 @@ if(isMoblie){
             path: 'companydetails',
             name: 'mcompanydetails',
             component: mcompanydetails
+          },
+          { // 城市定位
+            path: 'positionpage',
+            name: 'positionpage',
+            component: positionpage
           }
         ]
       }
