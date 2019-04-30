@@ -2,7 +2,7 @@
     <div class="hzms">
         <div class="pcWidth fix">
 			<!-- 左边导航区域 -->
-				<div class="help-left">
+				<!-- <div class="help-left">
 					<h2 class="left-tit">帮助中心</h2>
 					<ul class="left-list">
 						<li>
@@ -15,16 +15,49 @@
                     <div class="tel">
                         联系我们
                     </div>
-				</div>
+				</div> -->
 			<!-- 右侧内容区域 -->
 				<div class="help-right h13">
 					<div class="right-content">
 						<div class="content-top">
-							服务协议
+							招商动态
 						</div>
 						<div class="content-mid">
-                            <p class="MsoNormal">
-                                <b>小狗钱钱用户注册协议</b><b></b> 
+                           <h4 class="h">全耀装修社区平台，强势来袭！</h4>
+                           <p>
+                                集实体店、电子商务、微信公众号、小程序为一体
+                                的装饰装修行业以业主、装饰公司、建材商家及广大从
+                                业人员为核心的专业型服务型的社区服务平台；帮助广
+                                大业主、装饰公司、建材商家及广大从业人员构建线下
+                                实体、线上电子商务、移动社交等多种交易场景于一体
+                                的商业交易模式；为广大业主、装饰公司、建材商家及
+                                广大从业人员提供近距离便捷、经济的社区化交易服务
+                                ；
+                           </p>
+                            <p class="h" style="margin-top:50px;">
+                                去全耀装修社区服务平台专业便捷经济品质看得见！
+                            </p>
+						</div>
+						<div class="content-top">
+							入驻流程
+						</div>
+						<div class="content-mid">
+                            <img src="/static/img/sw_4.png" alt="">
+						</div>
+						<div class="content-top">
+							入驻指南
+						</div>
+						<div class="content-mid">
+                            <p>
+                                【1】提交入驻公司完善的公司资质，包括公司营业
+                                执照、税务登记证、组织机构代码证或者是统一社会
+                                信用代码证（均需加盖企业公章）。<br>
+                                【2】品牌授权、商标注册、渠道证明；<br>
+                                【3】平台审核，通过审核则有客服与您联系，若未
+                                通过审核，客服也将联系您，并提供进一步的协助；<br>
+                                【4】通过审核的用户，请在规定时间内缴纳平台费
+                                用，当您缴纳完费用后，您的商品便可在全耀平台上
+                                线。
                             </p>
 						</div>
 					</div>
@@ -32,8 +65,21 @@
 			</div>
     </div>
 </template>
+<script>
+export default {
+    data () {
+        return{
+            
+        }
+    }
+}
+</script>
+
 
 <style lang="less" scoped>
+.h{
+    color:#ff6d02;
+}
 .hzms{
     padding: 30px 0;
     .pcWidth{
@@ -84,7 +130,7 @@
     }
     .h13{
         min-height: 526px;
-        width: 950px;
+        width: 100%;
         float: left;
         .right-content{
             padding: 0 20px 20px;
@@ -101,6 +147,10 @@
                 padding-top: 30px;
                 line-height: 30px;
                 text-align: left;
+                margin-bottom:60px;
+                h4{
+                    font-size: 18px;
+                }
             }
         }
     }

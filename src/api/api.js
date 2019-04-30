@@ -54,6 +54,9 @@ export default {
   },
   universitydetails () { // 装修大学堂详情
     return baseUrl + '/index/school/detail'
+  },
+  inforadd () { // 投诉建议咨询
+    return baseUrl + '/index/index/inforadd'
   }
 
 

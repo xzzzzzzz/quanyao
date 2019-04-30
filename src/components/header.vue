@@ -9,7 +9,7 @@
                     <span>二维码</span>
                 </div>
                 <div class="header-right">
-                    <span>
+                    <span @click="jump({path:'cooperation'})">
                         商务中心
                     </span>
                 </div>      
@@ -104,6 +104,7 @@ export default {
 
 
 <style lang="less" scoped>
+    span{cursor: pointer;}
     .header{
         border-bottom: 3px solid #cc1c02;
         padding-bottom: 20px;

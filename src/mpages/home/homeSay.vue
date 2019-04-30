@@ -19,7 +19,7 @@
                 </ul>
             </div>
             <div class="foun">
-                <div class="foun-item" v-for="(item,index) in imgList" :key="index">
+                <div class="foun-item" v-for="(item,index) in imgList" :key="index" @click="jump({path:item.url})">
                     <img :src=item.img alt="">
                 </div>
             </div>
@@ -99,9 +99,9 @@ export default {
                 },
             ],
             imgList: [
-                {img: '/static/img/jy.png'},
-                {img: '/static/img/tx.png'},
-                {img:'/static/img/zx.png'}
+               {img: '/static/img/jy.png',url: 'proposal'},
+                {img: '/static/img/tx.png',url: 'complaint'},
+                {img:'/static/img/zx.png',url: 'consultation'}
             ]
         }
     }

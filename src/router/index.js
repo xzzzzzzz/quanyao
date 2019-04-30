@@ -27,6 +27,13 @@ const supplierdetails = resolve => require(['@/pages/supplier/supplierdetails'],
 //商家入驻
 const cooperation = resolve => require(['@/pages/cooperation'], resolve)
 
+//投诉
+const complaint = resolve => require(['@/pages/complaint'], resolve)
+//建议
+const proposal = resolve => require(['@/pages/proposal'], resolve)
+//咨询
+const consultation = resolve => require(['@/pages/consultation'], resolve)
+
 //手机端首页
 const mIndex = resolve => require(['@/mpages'], resolve)
 const mHome = resolve => require(['@/mpages/home'], resolve)
@@ -59,6 +66,13 @@ const mcooperation = resolve => require(['@/mpages/cooperation'], resolve)
 
 // 手机定位页面
 const positionpage = resolve => require(['@/mpages/position'], resolve)
+
+//投诉
+const mcomplaint = resolve => require(['@/mpages/complaint'], resolve)
+//建议
+const mproposal = resolve => require(['@/mpages/proposal'], resolve)
+//咨询
+const mconsultation = resolve => require(['@/mpages/consultation'], resolve)
 
 Vue.use(Router)
 const isMoblie = (navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
@@ -151,7 +165,22 @@ if(isMoblie){
             path: 'positionpage',
             name: 'positionpage',
             component: positionpage
-          }
+          },
+          { // 投诉
+            path: 'complaint',
+            name: 'mcomplaint',
+            component: mcomplaint
+          },
+          { // 建议
+            path: 'proposal',
+            name: 'mproposal',
+            component: mproposal
+          },
+          { // 咨询
+            path: 'consultation',
+            name: 'mconsultation',
+            component: mconsultation
+          },
         ]
       }
     ]
@@ -228,7 +257,7 @@ if(isMoblie){
             name: 'supplierdetails',
             component: supplierdetails
           },
-          { // 商家入驻
+          { // 商务中心
             path: 'cooperation',
             name: 'cooperation',
             component: cooperation
@@ -242,6 +271,21 @@ if(isMoblie){
             path: 'companydetails',
             name: 'companydetails',
             component: companydetails
+          },
+          { // 投诉
+            path: 'complaint',
+            name: 'complaint',
+            component: complaint
+          },
+          { // 建议
+            path: 'proposal',
+            name: 'proposal',
+            component: proposal
+          },
+          { // 咨询
+            path: 'consultation',
+            name: 'consultation',
+            component: consultation
           },
         ]
       }

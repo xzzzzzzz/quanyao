@@ -2,11 +2,11 @@
     <div class="mHeader">
         <div class="header-lfet fl">
             <span>上海</span>
-            <span @click="address">[切换]</span>
+            <span>[切换]</span>
         </div>
         <div class="header-right fr">
             <span class="el-icon-search"></span>
-            <span>商务中心</span>
+            <span @click="jump({name:'mcooperation'})">商务中心</span>
         </div>
     </div>
 </template>
