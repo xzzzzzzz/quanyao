@@ -7,23 +7,6 @@
                     </el-carousel-item>
                 </el-carousel>
             </div>
-        <div class="say mWidth">
-            <div class="say-content">
-                <div class="say-title">
-                    平台说说
-                </div>
-                <ul class="say-item">
-                    <li v-for="(item,index) in sayList" :key="index" @click="jump({path:'news',query:{ID: item.id,title: encodeURI(item.title)}})">
-                        {{item.title}}
-                    </li>
-                </ul>
-            </div>
-            <div class="foun">
-                <div class="foun-item" v-for="(item,index) in imgList" :key="index" @click="jump({path:item.url})">
-                    <img :src=item.img alt="">
-                </div>
-            </div>
-        </div>
 
         <div class="recommend mWidth">
             <div class="recommend-item">
@@ -39,6 +22,14 @@
         </div>
         <div class="min-banner mWidth">
             <img :src="baseUrl+minBanner.image" alt="">
+        </div>
+
+        <div class="say mWidth">
+            <div class="foun">
+                <div class="foun-item" v-for="(item,index) in imgList" :key="index" @click="jump({path:item.url})">
+                    <img :src=item.img alt="">
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -176,7 +167,7 @@ export default {
     }
     // 推荐
     .recommend{
-        padding:0 px2rem(20);
+        padding: px2rem(20);
         .recommend-item{
             width:100%;
             box-sizing: border-box;

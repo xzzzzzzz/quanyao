@@ -7,10 +7,20 @@
                 </div>
             </div>
             <div class="tool-item gong" @click="showGong">
-                <span class="el-icon-document"></span>
+                <span class="" style="font-size:12px;">公告</span>
                 <div class="item-child" v-if="isshowGong" @click.stop>
                     <div class="gong-content">
                         <p v-for="(item,index) in gongList" :key="index" @click="jump({path:'news',query:{ID: item.id,title: encodeURI(item.title)}}),isshowGong=false">
+                            {{item.title}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="tool-item say" @click="showSay">
+                <span class="" style="font-size:12px;">说说</span>
+                <div class="item-child" v-if="isshowSay" @click.stop>
+                    <div class="gong-content">
+                        <p v-for="(item,index) in sayList" :key="index" @click="jump({path:'news',query:{ID: item.id,title: encodeURI(item.title)}}),isshowSay=false">
                             {{item.title}}
                         </p>
                     </div>
@@ -36,7 +46,8 @@ export default {
                 {className: 'program',icon: 'el-icon-program',childrenText:'<img :src="/static/img/p.png" alt=""/>'},
             ],
             gongList: [],
-            isshowGong: false
+            isshowGong: false,
+            isshowSay: false
         }
     },
     mounted() {
@@ -77,15 +88,28 @@ export default {
           if(this.isshowGong){
               this.isshowGong = false
           }
+          if(this.isshowSay){
+              this.isshowSay = false
+          }
       },
       showGong() {
           this.isshowGong = !this.isshowGong
+          if(this.isshowSay){
+              this.isshowSay = false
+          }
+      },
+      showSay() {
+          this.isshowSay = !this.isshowSay
+           if(this.isshowGong){
+              this.isshowGong = false
+          }
       },
       async get() {
         const params = {}
         const data = await this.https(api.home(),params);
         if(data.code == '2000'){
             this.gongList = data.data.gong
+            this.sayList = data.data.ping
         }else{
             this.$message.error(data.msg)
         }
@@ -133,6 +157,17 @@ export default {
             }
             &.gong{
                 background:#fe2500 ;
+                .item-child{
+                    width:px2rem(300);
+                    line-height: px2rem(20);
+                    opacity: 1;
+                    filter: alpha(opacity=1);
+                    transform: scale(1);
+                    padding: px2rem(10)
+                }
+            }
+            &.say{
+                background:#ff6d02 ;
                 .item-child{
                     width:px2rem(300);
                     line-height: px2rem(20);

@@ -57,6 +57,9 @@ export default {
   },
   inforadd () { // 投诉建议咨询
     return baseUrl + '/index/index/inforadd'
+  },
+  sjzx() { // 商家入驻
+    return baseUrl+ '/index/content/index'
   }
 
 

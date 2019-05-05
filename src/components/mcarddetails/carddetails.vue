@@ -56,11 +56,6 @@
             <img :src=baseUrl+time.image alt="" height="100%">
             <div>{{time.title}}</div>
           </div>
-
-          <div class="img_box" v-for="(time, index) in typedatalist" :key="index" :class="{'wh1':typedatalist.length>=2}&&index!==5&&index!==4">
-            <img :src=baseUrl+time.image alt="" height="100%">
-            <div>{{time.title}}</div>
-          </div>
         </div>
       </div>
     </div>

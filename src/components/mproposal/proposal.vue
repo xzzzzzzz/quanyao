@@ -48,12 +48,12 @@ export default {
             }
         }
         return{
+            typeName: '',
             ruleForm: {
                 name:'',
                 iphone: '',
                 company: '',
                 textarea: '',
-                typeName: ''
             },
             rules: {
                 name: [
