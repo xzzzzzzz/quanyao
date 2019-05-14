@@ -1,8 +1,7 @@
 <template>
     <div class="home">
         <home-say :sayList='sayList' :noticeList='noticeList' :bannerList='bannerList'></home-say>
-        
-        
+
         <div class="noticeBanner">
             <img :src='"http://www.qyaoq.com"+minBanner.image' alt="">
         </div>
@@ -142,8 +141,8 @@ export default {
       },
       cardclicklist (date) {
         this.jump({name: 'companydetails', query: {ID: date.id}})
-      },
-    }
+      }
+    }                 
 }
 </script>
 
