@@ -3,12 +3,12 @@
         <div class="security-code-wrap">
             <label for="codes">
                 <ul class="security-code-container">
-                    <li class="field-wrap" v-for="(item, index) in number" :key="index">
+                    <li class="field-wrap" v-for="(item, index) in disInputs" :key="index">
                         <i class="char-field">{{value[index] || placeholder}}</i>
                     </li>
                 </ul>
             </label>
-            <input ref="input" class="input-code" @keyup="handleInput($event)" v-model="value"
+            <input ref="input" class="input-code" @keyup="handleInput($event)" @keydown="delNum($event)" v-model="value"
             id="codes" name="codes" type="tel" :maxlength="number"
             autocorrect="off" autocomplete="off" autocapitalize="off">
         </div>
@@ -31,7 +31,8 @@
  // variables
  data() {
   return {
-  value: ''
+  value: '',
+  disInputs:[{value:''},{value:''},{value:''},{value:''}],
   }
  },
  methods: {
@@ -43,13 +44,26 @@
   handleSubmit() {
     this.$emit('input', this.value)
   },
-  handleInput(e) {
+  handleInput() {
   this.$refs.input.value = this.value
-  if (this.value.length >= this.number) {
-    this.hideKeyboard()
-  }
+//   if (this.value.length >= this.number) {
+//     this.hideKeyboard()
+//   }
+  for(var i=0;i<this.value.length;i++){
+        this.disInputs[i].value=this.value.charAt(i)
+        // 表示字符串中某个位置的数字，即字符在字符串中的下标。
+    }
+        console.log(this.disInputs.value)
   this.handleSubmit()
-  }
+  },
+    delNum(){
+        var oEvent = window.event; 
+        if (oEvent.keyCode == 8) { 
+        if(this.realInput.length>0){
+            this.disInputs[this.realInput.length-1].value=''
+        }
+        }
+    }
  }
  }
 </script>
@@ -83,6 +97,9 @@
   margin: 2px;
   color: #000;
   text-align: center;
+  input{
+      -webkit-appearance: none;-moz-appearance: none;-ms-appearance: none;resize: none;outline: none;border:0;width:30px;line-height: 30px;text-align: center;height: 30px;font-size:16px;
+  }
   .char-field {
   font-style: normal;
   }
