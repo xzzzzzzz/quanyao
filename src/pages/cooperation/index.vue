@@ -1,8 +1,16 @@
 <template>
     <div class="hzms">
         <div class="pcWidth fix">
+            <div class="help-left">
+                <div class="left-tit">
+                    商务中心
+                </div>
+                <ul class="left-list">
+                    <li v-for="(item,index) in leftList" @click="leftActive(index)" :class="{'active': leftactive == index}" :key="index">{{item.name}}</li>
+                </ul>
+            </div>
 				<div class="help-right h13">
-					<div class="right-content">
+					<div class="right-content" v-if="leftactive==0">
 						<div class="content-top">
 							招商动态
 						</div>
@@ -20,12 +28,20 @@
 						<div class="content-mid" v-html="cooperationContent.text">
 						</div>
 					</div>
+                    <div class="right-content" v-else-if="leftactive==1">
+                        <entry></entry>
+                    </div>
+                    <div class="right-content" v-else>
+                        <querys></querys>
+                    </div>
 				</div>
 			</div>
     </div>
 </template>
 <script>
 import api from '@/api/api.js'
+import entry from '@/components/entry'
+import querys from '@/components/querys'
 export default {
     data () {
         return{
@@ -34,7 +50,17 @@ export default {
                 image: '',
                 text: ''
             },
-            baseUrl: 'https://www.qyaoq.com'
+            baseUrl: 'https://www.qyaoq.com',
+            leftList: [
+                {
+                    name: '入驻指南',
+                },{
+                    name: '自动入驻'
+                },{
+                    name: '进度查询'
+                }
+            ],
+            leftactive: 0
         }
     },
     mounted() {
@@ -55,8 +81,12 @@ export default {
                 this.cooperationContent.title= newTitle
                 this.cooperationContent.image= data.data.image
             }
+        },
+        leftActive(index){
+            this.leftactive = index
         }
-    }
+    },
+    components:{entry,querys}
 }
 </script>
 
@@ -115,7 +145,7 @@ export default {
     }
     .h13{
         min-height: 526px;
-        width: 100%;
+        width: 950px;
         float: left;
         .right-content{
             padding: 0 20px 20px;

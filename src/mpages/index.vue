@@ -9,7 +9,7 @@
       <router-view></router-view>
     </div>
     <!-- 底部 -->
-    <div class="buttombox">quanyao &copy;2009-2019 沪ICP备19009071号-1</div>
+    <div class="buttombox">quanyao &copy;2009-2019 <a href="http://www.beian.miit.gov.cn" target="_Blank">沪ICP备19009071号-1</a></div>
     <!-- 工具 -->
     <tool></tool>
   </div>
@@ -46,6 +46,9 @@ export default {
         left:0;
         font-size: px2rem(12);
         z-index: 333;
+        a{
+          color:#fff
+        }
     }
 }
 

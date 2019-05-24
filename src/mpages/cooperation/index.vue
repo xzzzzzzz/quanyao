@@ -1,8 +1,13 @@
 <template>
     <div class="hzms">
         <div class="mWidth fix">
+            <div class="help-left">
+                <ul class="left-list">
+                    <li v-for="(item,index) in leftList" @click="leftActive(index)" :class="{'active': leftactive == index}" :key="index">{{item.name}}</li>
+                </ul>
+            </div>
 				<div class="help-right h13">
-					<div class="right-content">
+					<div class="right-content" v-if="leftactive==0">
 						<div class="content-top">
 							招商动态
 						</div>
@@ -22,12 +27,20 @@
                             
 						</div>
 					</div>
+                    <div class="right-content" v-else-if="leftactive==1">
+                        <entry></entry>
+                    </div>
+                    <div class="right-content" v-else>
+                        <querys></querys>
+                    </div>
 				</div>
 			</div>
     </div>
 </template>
 <script>
 import api from '@/api/api.js'
+import entry from '@/components/mentry'
+import querys from '@/components/mquerys'
 export default {
     data () {
         return{
@@ -36,7 +49,17 @@ export default {
                 text: '',
                 image: ''
             },
-            baseUrl: 'https://www.qyaoq.com'
+            baseUrl: 'https://www.qyaoq.com',
+            leftList: [
+                {
+                    name: '入驻指南',
+                },{
+                    name: '自动入驻'
+                },{
+                    name: '进度查询'
+                }
+            ],
+            leftactive: 0
         }
     },
     mounted() {
@@ -57,8 +80,12 @@ export default {
                 this.cooperationContent.title= newTitle
                 this.cooperationContent.image= data.data.image
             }
+        },
+        leftActive(index){
+            this.leftactive = index
         }
-    }
+    },
+    components:{entry,querys}
 }
 </script>
 <style lang="scss" scoped>
@@ -74,28 +101,20 @@ export default {
     }
     .help-left{
         float: left;
-        margin-right: 10px;
-        width: 210px;
+        width: 100%;
         background:#f8f6f4;
         border:1px solid #dcc8ac;
-        .left-tit{
-            height: 48px;
-            line-height: 48px;
-            font-size: 20px;
-            color: #dd070b;
-            padding-left: 10px;
-        }
+        margin-bottom:px2rem(20);
         .left-list{
-            padding: 20px 10px;
             li{
-                height: 50px;
-                line-height: 50px;
+                height: px2rem(50);
+                line-height: px2rem(50);
                 font-size: 16px;
-                padding-left: 20px;
+                float: left;
+                width:33.33333%;
                 color:#666;
-                background:url(../../assets/img/libg.png) no-repeat 10px center;
-                background-size: 5px 5px;
                 cursor: pointer;
+                text-align: center;
                 &.active{
                     color:#dd070b;
                 }
@@ -118,7 +137,7 @@ export default {
         width: 100%;
         float: left;
         .right-content{
-            padding: 0 px2rem(20) px2rem(20);
+            padding: 0 px2rem(10) px2rem(20);
             box-sizing: border-box;
             .content-top{
                 height: px2rem(40);

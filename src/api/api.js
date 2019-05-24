@@ -60,6 +60,21 @@ export default {
   },
   sjzx() { // 商家入驻
     return baseUrl+ '/index/content/index'
+  },
+  getCode() { //获取验证码
+    return `${baseUrl}/index/Settled/sendsms`
+  },
+  step1next() { // 入驻第一步
+    return `${baseUrl}/index/Settled/smstrue`
+  },
+  step2next() { // 入驻第二步
+    return `${baseUrl}/index/Settled/userinfoadd`
+  },
+  uploadImg() { //图片上传
+    return `${baseUrl}/index/Settled/uploadImg`
+  },
+  schedule() { //进度查询
+    return `${baseUrl}/index/Settled/statusTrue`
   }
 
 

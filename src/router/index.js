@@ -74,6 +74,9 @@ const mproposal = resolve => require(['@/mpages/proposal'], resolve)
 //咨询
 const mconsultation = resolve => require(['@/mpages/consultation'], resolve)
 
+//协议
+const agreement = resolve => require(['@/pages/agreement'], resolve)
+const magreement = resolve => require(['@/mpages/agreement'], resolve)
 Vue.use(Router)
 const isMoblie = (navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))
 let router = null;
@@ -181,6 +184,11 @@ if(isMoblie){
             name: 'mconsultation',
             component: mconsultation
           },
+          { //入驻协议
+            path: 'agreement',
+            name: 'magreement',
+            component:magreement
+          }
         ]
       }
     ]
@@ -287,6 +295,11 @@ if(isMoblie){
             name: 'consultation',
             component: consultation
           },
+          { //入驻协议
+            path: 'agreement',
+            name: 'agreement',
+            component:agreement
+          }
         ]
       }
     ]
